@@ -1,0 +1,27 @@
+#home_main_bt_container {
+    float: none;
+    display: table;
+    margin: 165px auto 0;
+}
+
+.left_bt_container {
+    margin-left: 60px;
+}
+
+.bt_container {
+    display: inline-block;
+}
+
+.bt_container * {
+    display: block;
+}
+
+.home_bt_img {
+    height: 170px;
+    margin: auto;
+}
+
+.home_bt_title {
+    margin: 15px;
+    font-size: x-large;
+}

@@ -1,0 +1,21 @@
+#app-header {
+    background-color: white;
+    padding: 25px;
+    border: 1px solid transparent;
+    border-bottom-color: #acacac;
+}
+
+#app-header * {
+    display: inline-block;
+    vertical-align:middle;
+}
+
+#app-header-logo {
+    height: 90px;
+}
+
+#app-header-title {
+    margin-left: 25px;
+    color: #93c47d;
+    font-size: xx-large;
+}

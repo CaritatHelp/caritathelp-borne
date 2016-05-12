@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
 import {HomeComponent} from "./home.component";
 import {CentresComponent} from "./centres.component";
+import {EventsComponent} from "./events.component";
 
 @RouteConfig([
 	{
@@ -14,6 +15,11 @@ import {CentresComponent} from "./centres.component";
 		path: '/centres',
 		name: 'Centres',
 		component: CentresComponent
+	},
+	{
+		path: '/events',
+		name: 'Events',
+		component: EventsComponent
 	}
 ])
 @Component({

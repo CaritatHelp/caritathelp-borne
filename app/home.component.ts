@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Router} from '@angular/router-deprecated';
 
 @Component({
     selector: 'home',
@@ -8,4 +9,17 @@ import {Component} from '@angular/core';
 
 export class HomeComponent {
 
+    constructor(
+        private router: Router) {
+    }
+
+    onCentersRequested() {
+        let link = ['Centres'];
+        this.router.navigate(link);
+    }
+
+    onEventsRequested() {
+        let link = ['Events'];
+        this.router.navigate(link);
+    }
 }

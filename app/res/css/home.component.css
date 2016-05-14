@@ -11,14 +11,14 @@
 .bt_container {
     width: 260px;
     padding: 35px;
-    background-color: #b6d7a8;
+    background-color: whitesmoke;
     border-radius: 15px;
     display: inline-block;
     border: 2px solid #93c47d;
 }
 
 .bt_container:hover {
-    background-color: #93c47d;
+    background-color: #dddddd;
 }
 
 .bt_container * {

@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, ElementRef} from "@angular/core";
 import {ANGULAR2_GOOGLE_MAPS_DIRECTIVES, ANGULAR2_GOOGLE_MAPS_PROVIDERS} from "angular2-google-maps/core";
 
 @Component({
@@ -10,22 +10,18 @@ import {ANGULAR2_GOOGLE_MAPS_DIRECTIVES, ANGULAR2_GOOGLE_MAPS_PROVIDERS} from "a
 	providers: [
 		ANGULAR2_GOOGLE_MAPS_PROVIDERS
 	],
-	styles: [`
-    .sebm-google-map-container {
-      height: 300px;
-    }
-  `],
-	template: `
-    <h1>My first angular-google-maps app!</h1>
-
-    <!-- this creates a google map on the page with the given lat/lng from the component as the initial center of the map: -->
-
-    <sebm-google-map [latitude]="lat" [longitude]="lng">
-    </sebm-google-map>
-  `
+	properties: ['height: height']
 })
 
 export class CentresComponent {
 	lat: number = 51.678418;
 	lng: number = 7.809007;
+
+	private el:HTMLElement;
+	constructor(el: ElementRef) { this.el = el.nativeElement; }
+
+	getGoogleMapHeight() {
+		var height = window.innerHeight - document.getElementById("app-header").offsetHeight;
+		return height + "px";
+	}
 }

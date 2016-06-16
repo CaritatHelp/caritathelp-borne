@@ -1,24 +1,30 @@
-<sebm-google-map
-        [style.height]="getGoogleMapHeight()"
-        [latitude]="lat"
-        [longitude]="lng"
-        [zoom]="zoom"
-        [disableDefaultUI]="false"
-        [zoomControl]="false"
-        (mapClick)="mapClicked($event)">
+<div id="centres-main">
+    <sebm-google-map
+            id="map_container"
+            [style.height]="getGoogleMapHeight()"
+            [latitude]="lat"
+            [longitude]="lng"
+            [zoom]="zoom"
+            [disableDefaultUI]="false"
+            [zoomControl]="false"
+            (mapClick)="mapClicked($event)">
 
-    <sebm-google-map-marker
-            *ngFor="let m of markers; let i = index"
-            (markerClick)="clickedMarker(m.label, i)"
-            [latitude]="m.lat"
-            [longitude]="m.lng"
-            [label]="m.label"
-            [markerDraggable]="false">
+        <sebm-google-map-marker
+                *ngFor="let m of markers; let i = index"
+                (markerClick)="clickedMarker(m.label, i)"
+                [latitude]="m.lat"
+                [longitude]="m.lng"
+                [label]="m.label"
+                [markerDraggable]="false">
 
-        <sebm-google-map-info-window>
-            <strong>InfoWindow content</strong>
-        </sebm-google-map-info-window>
+            <sebm-google-map-info-window>
+                <strong>InfoWindow content</strong>
+            </sebm-google-map-info-window>
+        </sebm-google-map-marker>
+    </sebm-google-map>
 
-    </sebm-google-map-marker>
+    <div id="left_container"
+         [style.height]="getGoogleMapHeight()">
 
-</sebm-google-map>
+    </div>
+</div>

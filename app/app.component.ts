@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
+import {Component} from "@angular/core";
+import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from "@angular/router-deprecated";
 import {HomeComponent} from "./home.component";
 import {CentresComponent} from "./centres.component";
 import {EventsComponent} from "./events.component";
@@ -26,7 +26,7 @@ import {EventsComponent} from "./events.component";
 	selector: 'main-app',
 	templateUrl: 'app/res/html/app.component.html',
 	styleUrls: ['app/res/css/app.component.css'],
-	
+
 	directives: [ROUTER_DIRECTIVES],
 	providers: [
 		ROUTER_PROVIDERS

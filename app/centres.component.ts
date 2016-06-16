@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
 import {ANGULAR2_GOOGLE_MAPS_DIRECTIVES, MouseEvent} from "angular2-google-maps/core";
 import {CentresPanelComponent} from "./centres-panel.component";
+import {SheltersService} from "./services/shelters.service";
 
 
 @Component({
@@ -8,6 +9,7 @@ import {CentresPanelComponent} from "./centres-panel.component";
 	templateUrl: 'app/res/html/centres.component.html',
 	styleUrls: ['app/res/css/centres.component.css'],
 	directives: [ANGULAR2_GOOGLE_MAPS_DIRECTIVES, CentresPanelComponent],
+	providers: [SheltersService],
 	properties: ['height: height']
 })
 

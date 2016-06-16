@@ -19,4 +19,11 @@
             </button>
         </div>
     </div>
+
+    <ul class="heroes">
+        <li *ngFor="let shelter of shelters"
+            (click)="onSelect(shelter)">
+            <span class="badge">{{shelter.id}}</span> {{shelter.name}}
+        </li>
+    </ul>
 </div>

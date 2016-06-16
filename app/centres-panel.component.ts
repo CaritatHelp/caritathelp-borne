@@ -1,4 +1,6 @@
 import {Component} from "@angular/core";
+import {SheltersService} from "./services/shelters.service";
+import {Shelter} from "./model/shelter";
 
 @Component({
 	selector: 'centres-panel',
@@ -7,6 +9,10 @@ import {Component} from "@angular/core";
 })
 
 export class CentresPanelComponent {
+
+	shelters: Shelter[];
+
+	constructor(private sheltersService: SheltersService) { }
 
 	query = "";
 
@@ -18,7 +24,12 @@ export class CentresPanelComponent {
 		}
 	}
 
+	onSelect(shelter: Shelter) {
+		console.log("shelter selected : " + shelter.name);
+	}
+
 	onSearchRequested() {
-		console.log("query" + this.query)
+		console.log("query : " + this.query);
+		this.sheltersService.getSheltersSlowly().then(shelters => this.shelters = shelters);
 	}
 }

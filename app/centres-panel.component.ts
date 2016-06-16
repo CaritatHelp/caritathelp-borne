@@ -11,6 +11,7 @@ import {Shelter} from "./model/shelter";
 export class CentresPanelComponent {
 
 	shelters: Shelter[];
+	errorMessage;
 
 	constructor(private sheltersService: SheltersService) { }
 
@@ -30,6 +31,13 @@ export class CentresPanelComponent {
 
 	onSearchRequested() {
 		console.log("query : " + this.query);
-		this.sheltersService.getSheltersSlowly().then(shelters => this.shelters = shelters);
+		this.retrievesShelters();
+	}
+
+	retrievesShelters() {
+		this.sheltersService.getShelters()
+			.subscribe(
+				shelters => this.shelters = shelters,
+				error =>  this.errorMessage = <any>error);
 	}
 }

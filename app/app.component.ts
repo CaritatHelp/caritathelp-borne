@@ -4,6 +4,9 @@ import {HomeComponent} from "./home.component";
 import {CentresComponent} from "./centres.component";
 import {EventsComponent} from "./events.component";
 
+// Add the RxJS Observable operators we need in this app.
+import './rxjs-operators';
+
 @RouteConfig([
 	{
 		path: '/home',

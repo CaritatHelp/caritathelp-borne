@@ -5,7 +5,7 @@ h2, h1 {
 }
 
 body {
-    background-color: #c7eab8;
+    background-color: #c7eab8 !important;
     margin: 0;
     padding: 0;
 }

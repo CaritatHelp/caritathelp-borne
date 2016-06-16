@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {ANGULAR2_GOOGLE_MAPS_DIRECTIVES, MouseEvent} from "angular2-google-maps/core";
-import {CentresPanelComponent} from "./centres_panel.component";
+import {CentresPanelComponent} from "./centres-panel.component";
 
 
 @Component({

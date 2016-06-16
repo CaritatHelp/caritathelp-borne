@@ -1,7 +1,7 @@
 #centres_panel-main {
     height: inherit;
     width: 450px;
-    background-color: #2e6da4;
+    background-color: #c7eab8;
     z-index: 9999;
 }
 
@@ -10,4 +10,9 @@
     width: 42px;
     float: right;
     margin: 16px;
+}
+
+.input-group {
+    width: 400px;
+    margin: auto;
 }

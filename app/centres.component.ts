@@ -1,12 +1,13 @@
 import {Component} from "@angular/core";
 import {ANGULAR2_GOOGLE_MAPS_DIRECTIVES, MouseEvent} from "angular2-google-maps/core";
+import {CentresPanelComponent} from "./centres_panel.component";
 
 
 @Component({
 	selector: 'centres',
 	templateUrl: 'app/res/html/centres.component.html',
 	styleUrls: ['app/res/css/centres.component.css'],
-	directives: [ANGULAR2_GOOGLE_MAPS_DIRECTIVES],
+	directives: [ANGULAR2_GOOGLE_MAPS_DIRECTIVES, CentresPanelComponent],
 	properties: ['height: height']
 })
 

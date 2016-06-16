@@ -1,4 +1,5 @@
 <div id="centres-main">
+
     <sebm-google-map
             id="map_container"
             [style.height]="getGoogleMapHeight()"
@@ -23,8 +24,9 @@
         </sebm-google-map-marker>
     </sebm-google-map>
 
-    <div id="left_container"
-         [style.height]="getGoogleMapHeight()">
+    <centres_panel
+            id="panel_container"
+            [style.height]="getGoogleMapHeight()">
 
-    </div>
+    </centres_panel>
 </div>

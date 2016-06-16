@@ -1,0 +1,13 @@
+#centres_panel-main {
+    height: inherit;
+    width: 450px;
+    background-color: #2e6da4;
+    z-index: 9999;
+}
+
+.centres_menu_bt {
+    height: 42px;
+    width: 42px;
+    float: right;
+    margin: 16px;
+}

@@ -14,18 +14,6 @@ var Observable_1 = require("rxjs/Observable");
 var SheltersService = (function () {
     function SheltersService(http) {
         this.http = http;
-        this.SHELTERS = [
-            { id: 11, name: 'Mr. Nice' },
-            { id: 12, name: 'Narco' },
-            { id: 13, name: 'Bombasto' },
-            { id: 14, name: 'Celeritas' },
-            { id: 15, name: 'Magneta' },
-            { id: 16, name: 'RubberMan' },
-            { id: 17, name: 'Dynama' },
-            { id: 18, name: 'Dr IQ' },
-            { id: 19, name: 'Magma' },
-            { id: 20, name: 'Tornado' }
-        ];
         this.API_URL_SHELTERS = 'http://api.caritathelp.me/shelters'; // URL to web API
     }
     SheltersService.prototype.getShelters = function () {

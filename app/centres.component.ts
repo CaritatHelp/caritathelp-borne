@@ -2,6 +2,7 @@ import {Component} from "@angular/core";
 import {ANGULAR2_GOOGLE_MAPS_DIRECTIVES, MouseEvent} from "angular2-google-maps/core";
 import {CentresPanelComponent} from "./centres-panel.component";
 import {SheltersService} from "./services/shelters.service";
+import {Shelter} from "./model/shelter";
 
 
 @Component({
@@ -19,6 +20,15 @@ export class CentresComponent {
 
 	clickedMarker(label: string, index: number) {
 		console.log(`clicked the marker: ${label || index}`)
+	}
+
+	onShelterSelected(shelter: Shelter) {
+		console.log("shelter selected : " + shelter.name);
+		this.markers.push({
+			lat: shelter.latitude,
+			lng: shelter.longitude,
+			label: 'hclick'
+		});
 	}
 
 	mapClicked($event: MouseEvent) {

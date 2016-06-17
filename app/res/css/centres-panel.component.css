@@ -1,8 +1,47 @@
 #centres_panel-main {
+    -webkit-transition-duration: 500ms; /* Safari */
+    transition-duration: 500ms;
+
     height: inherit;
     width: 450px;
     background-color: #c7eab8;
     z-index: 9999;
+}
+
+.centres_panel-main-closed {
+    -ms-transform: translate(-375px, 0px); /* IE 9 */
+    -webkit-transform: translate(-375px, 0px); /* Safari */
+    transform: translate(-375px, 0px);
+}
+
+@keyframes showEffect {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@keyframes hideEffect {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.centres_panel-content-show {
+    animation: 300ms showEffect;
+}
+
+.centres_panel-content-hide {
+    animation: 300ms hideEffect;
+    animation-fill-mode: forwards;
 }
 
 .centres_menu_bt {
@@ -15,4 +54,12 @@
 .input-group {
     width: 400px;
     margin: auto;
+}
+
+.shelter-list {
+
+}
+
+.shelter-item {
+
 }

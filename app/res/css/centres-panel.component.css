@@ -6,6 +6,7 @@
     width: 450px;
     background-color: #c7eab8;
     z-index: 9999;
+    overflow: auto;
 }
 
 .centres_panel-main-closed {
@@ -57,9 +58,35 @@
 }
 
 .shelter-list {
-
+    padding: 0;
+    margin: 20px 0 0;
 }
 
 .shelter-item {
+    display: block;
+    list-style:none;
+    background-color: white;
+    margin: 0;
+}
 
+.shelter-item blockquote {
+    position: relative;
+    display: block;
+    padding: 15px;
+    margin-top: 3px;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.shelter-places {
+    margin: 15px;
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+address {
+    padding: 0;
+    margin: 0;
 }

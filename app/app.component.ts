@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, ViewContainerRef} from "@angular/core";
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from "@angular/router-deprecated";
 import {HomeComponent} from "./home.component";
 import {CentresComponent} from "./centres.component";
@@ -37,4 +37,10 @@ import './rxjs-operators';
 })
 export class AppComponent {
 	title = 'Caritahelp';
+	private viewContainerRef;
+
+	public constructor(viewContainerRef:ViewContainerRef) {
+		// You need this small hack in order to catch application root view container ref
+		this.viewContainerRef = viewContainerRef;
+	}
 }

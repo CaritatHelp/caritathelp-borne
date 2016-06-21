@@ -26,7 +26,21 @@
             <li *ngFor="let shelter of shelters"
                 (click)="onSelect(shelter)"
                 class="shelter-item">
-                <span class="badge">{{shelter.id}}</span> {{shelter.name}}
+                <blockquote>
+                    <strong>{{shelter.name}}</strong><br><br>
+
+                    <address>
+                        {{shelter.name}}<br>
+                        {{shelter.address}}<br>
+                        {{shelter.city}}, {{shelter.zipcode}}
+                    </address>
+
+                    <div class="shelter-places">
+                        Places : <strong>{{shelter.free_places}}</strong><br>
+                        Capacité : <strong>{{shelter.total_places}}</strong><br>
+                        Ref : <strong>{{shelter.id}}</strong>
+                    </div>
+                </blockquote>
             </li>
         </ul>
         <span>{{errorMessage}}</span>

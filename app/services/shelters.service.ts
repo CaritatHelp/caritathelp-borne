@@ -6,11 +6,18 @@ import {Shelter} from "../model/shelter";
 @Injectable()
 export class SheltersService {
     private API_URL_SHELTERS = 'http://api.caritathelp.me/shelters';  // URL to web API
+    private API_URL_SHELTERS_RESEARCH = 'http://api.caritathelp.me/shelters/search';  // URL to web API
 
     constructor (private http: Http) {}
 
     getShelters(): Observable<Shelter[]> {
         return this.http.get(this.API_URL_SHELTERS)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    getSearchShelters(query: string): Observable<Shelter[]> {
+        return this.http.get(this.API_URL_SHELTERS_RESEARCH + "?research=" + query)
             .map(this.extractData)
             .catch(this.handleError);
     }

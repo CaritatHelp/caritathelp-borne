@@ -90,3 +90,9 @@ address {
     padding: 0;
     margin: 0;
 }
+
+.error-message {
+    display: block;
+    margin: auto;
+    text-align: center;
+}

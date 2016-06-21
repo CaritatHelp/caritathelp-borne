@@ -53,16 +53,28 @@ export class CentresPanelComponent {
 
 	onSearchRequested() {
 		console.log("query : " + this.query);
-		this.retrievesShelters()
+		this.retrievesShelters(this.query)
 
 	}
 
-	retrievesShelters() {
+	retrievesShelters(query: string) {
 		this.icMainButton = this.IC_BT_REFRESH;
-		this.sheltersService.getShelters()
-			.subscribe(
-				shelters => this.shelters = shelters,
-				error =>  this.errorMessage = <any>error,
-				() => this.icMainButton = this.IC_BT_SEARCH);
+		var observable = (query == null || query == "")
+			? this.sheltersService.getShelters()
+			: this.sheltersService.getSearchShelters(query);
+		observable.subscribe(
+			shelters => this.handleSuccess(shelters),
+			error =>  this.errorMessage = <any>error,
+			() => this.icMainButton = this.IC_BT_SEARCH);
+	}
+
+	handleSuccess(shelters: Shelter[]) {
+		if (shelters == null || shelters.length == 0) {
+			this.shelters = null;
+			this.errorMessage = "Aucun résultat pour cette recherche";
+			return;
+		}
+		this.errorMessage = null;
+		this.shelters = shelters;
 	}
 }

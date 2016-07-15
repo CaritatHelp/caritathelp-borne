@@ -109,3 +109,9 @@ address {
     margin-left: 20px;
     margin-top: 20px;
 }
+
+#free_place_container {
+    display:block;
+    margin-left: 20px;
+    margin-top: 20px;
+}

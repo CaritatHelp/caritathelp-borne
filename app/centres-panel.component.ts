@@ -29,6 +29,8 @@ export class CentresPanelComponent implements OnInit {
 	buttonSrc = this.BUTTON_CLOSE;
 	contentAlpha = this.CONTENT_SHOW;
 
+	freePlaceOnly: boolean;
+
 	@Output() onShelterSelected = new EventEmitter<Shelter>();
 	@Output() onQueryFinished = new EventEmitter<Shelter[]>();
 
@@ -37,6 +39,7 @@ export class CentresPanelComponent implements OnInit {
 	query = "";
 
   	ngOnInit() {
+  		this.freePlaceOnly = false;
   	 	this.retrievesShelters("");
   	}
 
@@ -63,8 +66,22 @@ export class CentresPanelComponent implements OnInit {
 	}
 
 	onSearchRequested() {
+		this.clearList();
 		console.log("query : " + this.query);
 		this.retrievesShelters(this.query);
+	}
+
+	onFreePlacesOnlyChanged() {
+		this.freePlaceOnly = !this.freePlaceOnly;
+		console.log(this.freePlaceOnly);
+
+		if (this.freePlaceOnly) {
+			for (var shelter of this.shelters) {
+				if (shelter.free_places == 0) {
+					this.shelters.splice(this.shelters.indexOf(shelter), 1);
+				}
+			}
+		}
 	}
 
 	retrievesShelters(query: string) {
@@ -88,6 +105,14 @@ export class CentresPanelComponent implements OnInit {
 		for (var shelter of shelters) {
 			if (shelter.tags != null && shelter.tags.length == 0) {
 				shelter.tags = null;
+			}
+		}
+
+		if (this.freePlaceOnly) {
+			for (var shelter of shelters) {
+				if (shelter.free_places == 0) {
+					shelters.splice(shelters.indexOf(shelter), 1);
+				}
 			}
 		}
 

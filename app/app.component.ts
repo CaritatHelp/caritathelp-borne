@@ -36,7 +36,7 @@ import './rxjs-operators';
 	]
 })
 export class AppComponent {
-	title = 'Caritahelp';
+	title = 'Caritathelp';
 	private viewContainerRef;
 
 	public constructor(viewContainerRef:ViewContainerRef) {

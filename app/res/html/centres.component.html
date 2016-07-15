@@ -36,8 +36,10 @@
             <sebm-google-map-info-window>
                 <strong>Détail d'un centre</strong>
 
-                <blockquote>
-                    <strong>{{selectedShelter.name}}</strong><br><br>
+                <blockquote *ngIf="selectedShelter">
+                    <strong>{{selectedShelter.name}}</strong><br>
+
+                    <img src="http://api.caritathelp.me/{{selectedShelter.thumb_path}}" class="center_detail_img"/><br>
 
                     <address>
                         {{selectedShelter.name}}<br>
@@ -58,6 +60,7 @@
     <centres-panel
             id="panel_container"
             (onShelterSelected)="onShelterSelected($event)"
+            (onQueryFinished)="onQueryFinished($event)"
             [style.height]="getGoogleMapHeight()">
 
     </centres-panel>

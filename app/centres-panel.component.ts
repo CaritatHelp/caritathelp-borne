@@ -30,6 +30,7 @@ export class CentresPanelComponent {
 	contentAlpha = this.CONTENT_SHOW;
 
 	@Output() onShelterSelected = new EventEmitter<Shelter>();
+	@Output() onQueryFinished = new EventEmitter<Shelter[]>();
 
 	constructor(private sheltersService: SheltersService) { }
 
@@ -76,5 +77,6 @@ export class CentresPanelComponent {
 		}
 		this.errorMessage = null;
 		this.shelters = shelters;
+		this.onQueryFinished.emit(shelters);
 	}
 }

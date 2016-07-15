@@ -11,3 +11,7 @@
 #panel_container {
     position: absolute;
 }
+
+.center_detail_img {
+    margin: auto;
+}

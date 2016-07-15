@@ -20,21 +20,35 @@ export class CentresComponent {
 	zoom: number = 8;
 	selectedShelter: Shelter;
 
-	// initial center position for the map
-	lat: number = 51.673858;
-	lng: number = 7.815982;
+	// initial center position for the map longitude="2.3488000" -d latitude="48.8534100"
+	lat: number = 48.8534100;
+	lng: number = 2.3488000;
 	@ViewChild('smModal') smModal;
 
 	clickedMarker(shelter: Shelter) {
 		this.selectedShelter = shelter;
-		console.log(`clicked the marker: ${shelter.name}`)
 	}
 
 	clearShelters() {
 		this.markers = [];
 	}
 
+	onQueryFinished(shelters: Shelter[]) {
+		this.clearShelters();
+		for (var shelter of shelters) {
+			if (shelter == null || shelter.latitude == null || shelter.longitude == null) {
+				continue;
+			}
+			this.markers.push({
+				lat: parseFloat(shelter.latitude.toString()),
+				lng: parseFloat(shelter.longitude.toString()),
+				shelter: shelter
+			});
+        }
+	}
+
 	onShelterSelected(shelter: Shelter) {
+		this.clearShelters();
 		//console.log("shelter selected : " + shelter.name + " push marker at : " + shelter.latitude + " " + shelter.longitude);
 		if (shelter == null || shelter.latitude == null || shelter.longitude == null) {
 			this.smModal.show();
@@ -49,7 +63,7 @@ export class CentresComponent {
 	}
 
 	mapClicked($event: MouseEvent) {
-		var tmp = new Shelter;
+		/*var tmp = new Shelter;
 		tmp.name = "rue du crabe";
 		
 		this.markers.push({
@@ -57,7 +71,7 @@ export class CentresComponent {
 			lng: $event.coords.lng,
 			shelter: tmp
 		});
-		console.log(this.markers);
+		console.log(this.markers);*/
 	}
 
 	markers: marker[] = [

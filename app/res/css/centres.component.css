@@ -15,3 +15,9 @@
 .center_detail_img {
     margin: auto;
 }
+
+.center_main_detail_img {
+    margin: 20px;
+    display: block;
+    margin: auto;
+}

@@ -96,3 +96,16 @@ address {
     margin: auto;
     text-align: center;
 }
+
+.shelter_item_list_detail_img {
+    height: 90px;
+}
+
+.tags_container {
+    max-width: 100px;
+}
+
+.clear_list_btn {
+    margin-left: 20px;
+    margin-top: 20px;
+}

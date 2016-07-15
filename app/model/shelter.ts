@@ -9,4 +9,5 @@ export class Shelter {
     total_places: number;
     free_places: number;
     thumb_path: string;
+    tags: string[];
 }

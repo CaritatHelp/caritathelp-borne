@@ -16,9 +16,15 @@ var SheltersService = (function () {
         this.http = http;
         this.API_URL_SHELTERS = 'http://api.caritathelp.me/shelters'; // URL to web API
         this.API_URL_SHELTERS_RESEARCH = 'http://api.caritathelp.me/shelters/search'; // URL to web API
+        this.API_URL_SHELTER_PICTURES = 'http://api.caritathelp.me/shelters/'; // URL to pictures
     }
     SheltersService.prototype.getShelters = function () {
         return this.http.get(this.API_URL_SHELTERS)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    SheltersService.prototype.getShelterImage = function (shelter) {
+        return this.http.get(this.API_URL_SHELTER_PICTURES + shelter.id.toString() + "/pictures")
             .map(this.extractData)
             .catch(this.handleError);
     };

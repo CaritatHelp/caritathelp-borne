@@ -37,9 +37,11 @@
                 <strong>Détail d'un centre</strong>
 
                 <blockquote *ngIf="selectedShelter">
-                    <strong>{{selectedShelter.name}}</strong><br>
+                    <strong>{{selectedShelter.name}}</strong><br><br>
 
-                    <img src="http://api.caritathelp.me/{{selectedShelter.thumb_path}}" class="center_detail_img"/><br>
+                    <img src="http://api.caritathelp.me/{{selectedShelter.thumb_path}}" class="center_main_detail_img"/><br>
+
+                    <img *ngIf="selectedUrls" *ngFor="let url of selectedUrls" src="url" class="center_detail_img">
 
                     <address>
                         {{selectedShelter.name}}<br>
@@ -50,6 +52,11 @@
                     <div class="shelter-places">
                         Places : <strong>{{selectedShelter.free_places}}</strong><br>
                         Capacité : <strong>{{selectedShelter.total_places}}</strong><br>
+                        <div *ngIf="selectedShelter.tags" class="tags_container">tags :
+                            <span *ngFor="let tag of selectedShelter.tags">
+                                <strong>{{tag}} </strong>
+                            </span>
+                        </div>
                         Ref : <strong>{{selectedShelter.id}}</strong>
                     </div>
                 </blockquote>

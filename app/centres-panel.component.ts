@@ -8,7 +8,7 @@ import {Shelter} from "./model/shelter";
 	styleUrls: ['app/res/css/centres-panel.component.css']
 })
 
-export class CentresPanelComponent {
+export class CentresPanelComponent implements OnInit {
 
 	private IC_BT_SEARCH = "glyphicon-search";
 	private IC_BT_REFRESH = "glyphicon-refresh";
@@ -36,6 +36,16 @@ export class CentresPanelComponent {
 
 	query = "";
 
+  	ngOnInit() {
+  	 	this.retrievesShelters("");
+  	}
+
+	clearList() {
+			this.errorMessage = null;
+    		this.shelters = [];
+    		this.onQueryFinished.emit([]);
+	}
+
 	toggle(isVisible: boolean = false) {
 		if (isVisible) {
 			this.panelState = this.PANEL_CLOSED;
@@ -54,8 +64,7 @@ export class CentresPanelComponent {
 
 	onSearchRequested() {
 		console.log("query : " + this.query);
-		this.retrievesShelters(this.query)
-
+		this.retrievesShelters(this.query);
 	}
 
 	retrievesShelters(query: string) {
@@ -75,6 +84,13 @@ export class CentresPanelComponent {
 			this.errorMessage = "Aucun résultat pour cette recherche";
 			return;
 		}
+
+		for (var shelter of shelters) {
+			if (shelter.tags != null && shelter.tags.length == 0) {
+				shelter.tags = null;
+			}
+		}
+
 		this.errorMessage = null;
 		this.shelters = shelters;
 		this.onQueryFinished.emit(shelters);

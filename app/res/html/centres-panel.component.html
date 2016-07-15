@@ -22,6 +22,12 @@
             </div>
         </div>
 
+        <button
+                type="button"
+                class="btn btn-default btn-sm clear_list_btn"
+                (click)="clearList()">
+            Vider la liste
+        </button>
         <ul class="shelter-list">
             <li *ngFor="let shelter of shelters"
                 (click)="onSelect(shelter)"
@@ -29,16 +35,21 @@
                 <blockquote>
                     <strong>{{shelter.name}}</strong><br><br>
 
-                    <address>
+                    <img src="http://api.caritathelp.me/{{shelter.thumb_path}}" class="shelter_item_list_detail_img"/><br>
+<!--                    <address>
                         {{shelter.name}}<br>
                         {{shelter.address}}<br>
                         {{shelter.city}}, {{shelter.zipcode}}
-                    </address>
+                    </address>-->
 
                     <div class="shelter-places">
                         Places : <strong>{{shelter.free_places}}</strong><br>
                         Capacité : <strong>{{shelter.total_places}}</strong><br>
-                        Ref : <strong>{{shelter.id}}</strong>
+                        <div *ngIf="shelter.tags" class="tags_container">tags :
+                            <span *ngFor="let tag of shelter.tags">
+                                <strong>{{tag}} </strong>
+                            </span>
+                        </div>
                     </div>
                 </blockquote>
             </li>

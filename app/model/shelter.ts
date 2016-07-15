@@ -8,4 +8,5 @@ export class Shelter {
     longitude: number;
     total_places: number;
     free_places: number;
+    thumb_path: string;
 }

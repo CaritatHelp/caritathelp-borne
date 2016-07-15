@@ -27,14 +27,30 @@
 
         <sebm-google-map-marker
                 *ngFor="let m of markers; let i = index"
-                (markerClick)="clickedMarker(m.label, i)"
+                (markerClick)="clickedMarker(m.shelter)"
                 [latitude]="m.lat"
                 [longitude]="m.lng"
                 [label]="m.label"
                 [markerDraggable]="false">
 
             <sebm-google-map-info-window>
-                <strong>InfoWindow content</strong>
+                <strong>Détail d'un centre</strong>
+
+                <blockquote>
+                    <strong>{{selectedShelter.name}}</strong><br><br>
+
+                    <address>
+                        {{selectedShelter.name}}<br>
+                        {{selectedShelter.address}}<br>
+                        {{selectedShelter.city}}, {{selectedShelter.zipcode}}
+                    </address>
+
+                    <div class="shelter-places">
+                        Places : <strong>{{selectedShelter.free_places}}</strong><br>
+                        Capacité : <strong>{{selectedShelter.total_places}}</strong><br>
+                        Ref : <strong>{{selectedShelter.id}}</strong>
+                    </div>
+                </blockquote>
             </sebm-google-map-info-window>
         </sebm-google-map-marker>
     </sebm-google-map>

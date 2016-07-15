@@ -18,14 +18,20 @@ import {BS_VIEW_PROVIDERS, MODAL_DIRECTVES, ModalDirective} from "ng2-bootstrap/
 export class CentresComponent {
 	// google maps zoom level
 	zoom: number = 8;
+	selectedShelter: Shelter;
 
 	// initial center position for the map
 	lat: number = 51.673858;
 	lng: number = 7.815982;
 	@ViewChild('smModal') smModal;
 
-	clickedMarker(label: string, index: number) {
-		//console.log(`clicked the marker: ${label || index}`)
+	clickedMarker(shelter: Shelter) {
+		this.selectedShelter = shelter;
+		console.log(`clicked the marker: ${shelter.name}`)
+	}
+
+	clearShelters() {
+		this.markers = [];
 	}
 
 	onShelterSelected(shelter: Shelter) {
@@ -37,16 +43,19 @@ export class CentresComponent {
 		this.markers.push({
 			lat: parseFloat(shelter.latitude.toString()),
 			lng: parseFloat(shelter.longitude.toString()),
-			label: shelter.name
+			shelter: shelter
 		});
 		console.log(this.markers);
 	}
 
 	mapClicked($event: MouseEvent) {
+		var tmp = new Shelter;
+		tmp.name = "rue du crabe";
+		
 		this.markers.push({
 			lat: $event.coords.lat,
 			lng: $event.coords.lng,
-			label: 'hclick'
+			shelter: tmp
 		});
 		console.log(this.markers);
 	}
@@ -66,5 +75,5 @@ export class CentresComponent {
 interface marker {
 	lat: number;
 	lng: number;
-	label?: string;
+	shelter: Shelter;
 }

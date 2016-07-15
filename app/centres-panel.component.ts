@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from "@angular/core";
+import {Component, EventEmitter, Output, OnInit} from "@angular/core";
 import {SheltersService} from "./services/shelters.service";
 import {Shelter} from "./model/shelter";
 

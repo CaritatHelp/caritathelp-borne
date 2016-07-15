@@ -17,9 +17,10 @@ import {BS_VIEW_PROVIDERS, MODAL_DIRECTVES, ModalDirective} from "ng2-bootstrap/
 
 export class CentresComponent {
 	// google maps zoom level
-	zoom: number = 8;
+	zoom: number = 12;
 	selectedShelter: Shelter;
 	selectedUrls: string[];
+	errorMessage: string;
 
 	// initial center position for the map longitude="2.3488000" -d latitude="48.8534100"
 	lat: number = 48.8534100;

@@ -1,1 +1,51 @@
-<h2>Events</h2>
+<div id="events_main_container">
+    <div class="input-group">
+        <input
+                type="text"
+                class="form-control"
+                placeholder="Search"
+                [(ngModel)]="query" >
+        <div class="input-group-btn">
+            <button
+                    (click)="onSearchRequested()"
+                    class="btn btn-default m-progress"
+                    type="submit">
+                <i class="glyphicon {{icMainButton}}"></i>
+            </button>
+        </div>
+    </div>
+
+<!--    <select class="form-control ranger-select" [(ngModel)]="selectedRanger" (ngModelChange)="updateRanger($event)">
+        <option *ngFor="let item of ranger">{{item}}</option>
+    </select>-->
+
+    <br>
+
+    <button
+            type="button"
+            class="btn btn-default btn-sm clear_list_btn"
+            (click)="clearList()">
+        Vider la liste
+    </button>
+
+    <hr>
+
+    <span class="error-message">{{errorMessage}}</span>
+
+    <ul class="events-list">
+        <li *ngFor="let event of events"
+            (click)="onSelect(event)"
+            class="event-item">
+            <blockquote>
+                <strong>{{event.title}}</strong><br><br>
+                <strong>description => </strong>{{event.description}}<br>
+                <strong>place => </strong>{{event.place}}<br>
+                <strong>datetime begin => </strong>{{setDate(event.begin) | date:"dd/MM/yyyy"}} à {{setDate(event.begin) | date:"HH:mm"}}<br>
+                <strong>datetime end => </strong>{{setDate(event.end) | date:"dd/MM/yyyy"}} à {{setDate(event.begin) | date:"HH:mm"}}<br>
+                <strong>assoc ID : </strong>{{event.assoc_id}}, {{event.assoc_name}}<br>
+                <img src="http://api.caritathelp.me/{{event.thumb_path}}" height="100px"/><br>
+
+            </blockquote>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,9 @@
+#events_main_container {
+    width: 30%;
+    margin: auto;
+}
+
+.event-item {
+    background-color: white;
+    margin: 15px;
+}

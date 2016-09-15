@@ -31,12 +31,12 @@ export class CentresPanelComponent implements OnInit {
 
 	freePlaceOnly: boolean;
 
+    query = "";
+
 	@Output() onShelterSelected = new EventEmitter<Shelter>();
 	@Output() onQueryFinished = new EventEmitter<Shelter[]>();
 
 	constructor(private sheltersService: SheltersService) { }
-
-	query = "";
 
   	ngOnInit() {
   		this.freePlaceOnly = false;

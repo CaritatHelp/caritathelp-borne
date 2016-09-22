@@ -52,6 +52,7 @@
                     <div class="shelter-places">
                         Places : <strong>{{shelter.free_places}}</strong><br>
                         Capacité : <strong>{{shelter.total_places}}</strong><br>
+                        Position : <strong>{{isLocationAvailable(shelter)}}</strong><br>
                         <div *ngIf="shelter.tags" class="tags_container">tags :
                             <span *ngFor="let tag of shelter.tags">
                                 <strong>{{tag}} </strong>

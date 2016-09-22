@@ -61,6 +61,13 @@ export class CentresPanelComponent implements OnInit {
 		}
 	}
 
+    isLocationAvailable(shelter: Shelter) {
+        if (shelter == null || shelter.latitude == null || shelter.longitude == null) {
+            return "Non disponible";
+        }
+        return "disponible";
+    }
+
 	onSelect(shelter: Shelter) {
 		this.onShelterSelected.emit(shelter);
 	}

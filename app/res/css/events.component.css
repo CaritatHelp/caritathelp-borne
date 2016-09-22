@@ -5,5 +5,10 @@
 
 .event-item {
     background-color: white;
-    margin: 15px;
+    list-style:none;
+    margin: 0;
+}
+
+.event_picture {
+    margin: 20px;
 }

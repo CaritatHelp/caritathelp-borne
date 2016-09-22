@@ -1,5 +1,5 @@
 <div id="events_main_container">
-    <div class="input-group">
+    <br><div class="input-group">
         <input
                 type="text"
                 class="form-control"
@@ -38,13 +38,14 @@
             class="event-item">
             <blockquote>
                 <strong>{{event.title}}</strong><br><br>
-                <strong>description => </strong>{{event.description}}<br>
-                <strong>place => </strong>{{event.place}}<br>
-                <strong>datetime begin => </strong>{{setDate(event.begin) | date:"dd/MM/yyyy"}} à {{setDate(event.begin) | date:"HH:mm"}}<br>
-                <strong>datetime end => </strong>{{setDate(event.end) | date:"dd/MM/yyyy"}} à {{setDate(event.begin) | date:"HH:mm"}}<br>
-                <strong>assoc ID : </strong>{{event.assoc_id}}, {{event.assoc_name}}<br>
-                <img src="http://api.caritathelp.me/{{event.thumb_path}}" height="100px"/><br>
-
+                <div>
+                    <img src="http://api.caritathelp.me/{{event.thumb_path}}" class="event_picture" height="100px"/>
+                    {{event.description}}
+                </div>
+                <strong>Lieu: </strong>{{event.place}}<br>
+                <strong>Début le: </strong>{{setDate(event.begin) | date:"dd/MM/yyyy"}} à {{setDate(event.begin) | date:"HH:mm"}}<br>
+                <strong>Fin le: </strong>{{setDate(event.end) | date:"dd/MM/yyyy"}} à {{setDate(event.begin) | date:"HH:mm"}}<br>
+                <strong>Réf de l'assoc: </strong>{{event.assoc_id}}, {{event.assoc_name}}<br>
             </blockquote>
         </li>
     </ul>

@@ -14,7 +14,7 @@ var Observable_1 = require("rxjs/Observable");
 var EventsService = (function () {
     function EventsService(http) {
         this.http = http;
-        this.API_URL_EVENTS = 'http://api.caritathelp.me/events?token=jWLyw2SSJzWENsEqLEKdIw&ranger='; // URL to web API
+        this.API_URL_EVENTS = 'http://api.caritathelp.me/events?token=tcUcPyugyeKXOCN_qd_SIg&ranger='; // URL to web API
     }
     EventsService.prototype.getEvents = function (ranger) {
         return this.http.get(this.API_URL_EVENTS + ranger)

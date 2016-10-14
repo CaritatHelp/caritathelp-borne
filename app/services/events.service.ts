@@ -5,7 +5,7 @@ import {Event} from "../model/event";
 
 @Injectable()
 export class EventsService {
-    private API_URL_EVENTS = 'http://api.caritathelp.me/events?token=tcUcPyugyeKXOCN_qd_SIg&ranger=';  // URL to web API
+    private API_URL_EVENTS = 'http://staging.caritathelp.me/events?range=';  // URL to web API
 
     constructor (private http: Http) {}
 
@@ -16,6 +16,7 @@ export class EventsService {
     }
 
     searchEvents(query: string, ranger: string): Observable<Event[]> {
+        console.log(this.API_URL_EVENTS + ranger);
         return this.http.get(this.API_URL_EVENTS + ranger)
             .map(this.extractData)
             .catch(this.handleError);

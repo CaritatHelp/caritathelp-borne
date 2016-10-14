@@ -1,23 +1,52 @@
-<div id="events_main_container">
-    <br><div class="input-group">
-        <input
-                type="text"
-                class="form-control"
-                placeholder="Search"
-                [(ngModel)]="query" >
-        <div class="input-group-btn">
-            <button
-                    (click)="onSearchRequested()"
-                    class="btn btn-default m-progress"
-                    type="submit">
-                <i class="glyphicon {{icMainButton}}"></i>
-            </button>
+<div bsModal #smModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" *ngIf="selectedEvent">
+            <div class="modal-header">
+                <button type="button" class="close" aria-label="Close" (click)="smModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">{{selectedEvent.title}}</h4>
+            </div>
+            <div class="modal-body row">
+                <div class="col-xs-6 col-md-4">
+                    <img src="http://api.caritathelp.me/{{selectedEvent.thumb_path}}" class="event_picture" height="100px"/>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-8">
+                    {{selectedEvent.description}}<br><br>
+                    <table>
+                        <tr><td><strong>Nom de l'assoc: </strong></td><td class="data-row">{{selectedEvent.assoc_name}}</td></tr>
+                        <tr><td><strong>Lieu: </strong></td><td class="data-row">{{selectedEvent.place}}</td></tr>
+                        <tr><td><strong>Début le: </strong></td><td class="data-row">{{setDate(selectedEvent.begin) | date:"dd/MM/yyyy"}} à {{setDate(selectedEvent.begin) | date:"HH:mm"}}</td></tr>
+                        <tr><td><strong>Fin le: </strong></td><td class="data-row">{{setDate(selectedEvent.end) | date:"dd/MM/yyyy"}} à {{setDate(selectedEvent.begin) | date:"HH:mm"}}</td></tr>
+                        <tr><td><strong>ID de l'évènement: </strong></td><td class="data-row">{{selectedEvent.id}}</td></tr>
+                        <tr><td><strong>Réf de l'assoc: </strong></td><td class="data-row">{{selectedEvent.assoc_id}}</td></tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 
-<!--    <select class="form-control ranger-select" [(ngModel)]="selectedRanger" (ngModelChange)="updateRanger($event)">
-        <option *ngFor="let item of ranger">{{item}}</option>
-    </select>-->
+<div id="events_main_container">
+    <br><div class="input-group">
+    <input
+            type="text"
+            class="form-control"
+            placeholder="Search"
+            [(ngModel)]="query" >
+    <div class="input-group-btn">
+        <button
+                (click)="onSearchRequested()"
+                class="btn btn-default m-progress"
+                type="submit">
+            <i class="glyphicon {{icMainButton}}"></i>
+        </button>
+    </div>
+</div>
+
+    <!--    <select class="form-control ranger-select" [(ngModel)]="selectedRanger" (ngModelChange)="updateRanger($event)">
+            <option *ngFor="let item of ranger">{{item}}</option>
+        </select>-->
 
     <br>
 
@@ -32,21 +61,31 @@
 
     <span class="error-message">{{errorMessage}}</span>
 
-    <ul class="events-list">
-        <li *ngFor="let event of events"
-            (click)="onSelect(event)"
-            class="event-item">
-            <blockquote>
-                <strong>{{event.title}}</strong><br><br>
-                <div>
-                    <img src="http://api.caritathelp.me/{{event.thumb_path}}" class="event_picture" height="100px"/>
-                    {{event.description}}
-                </div>
-                <strong>Lieu: </strong>{{event.place}}<br>
-                <strong>Début le: </strong>{{setDate(event.begin) | date:"dd/MM/yyyy"}} à {{setDate(event.begin) | date:"HH:mm"}}<br>
-                <strong>Fin le: </strong>{{setDate(event.end) | date:"dd/MM/yyyy"}} à {{setDate(event.begin) | date:"HH:mm"}}<br>
-                <strong>Réf de l'assoc: </strong>{{event.assoc_id}}, {{event.assoc_name}}<br>
-            </blockquote>
-        </li>
-    </ul>
+    <div class="panel panel-default"
+         *ngFor="let event of events"
+         (click)="onSelect(event)">
+        <div class="panel-heading">
+            <h3 class="panel-title"><strong>{{event.title}}</strong></h3>
+        </div>
+        <div class="panel-body row">
+            <div class="col-xs-6 col-md-4">
+                <img src="http://api.caritathelp.me/{{event.thumb_path}}" class="event_picture" height="100px"/>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-8">
+                {{event.description}}<br><br>
+                <table>
+                    <tr><td><strong>Nom de l'assoc: </strong></td><td class="data-row">{{event.assoc_name}}</td></tr>
+                    <tr><td><strong>Lieu: </strong></td><td class="data-row">{{event.place}}</td></tr>
+                    <tr><td><strong>Début le: </strong></td><td class="data-row">{{setDate(event.begin) | date:"dd/MM/yyyy"}} à {{setDate(event.begin) | date:"HH:mm"}}</td></tr>
+                    <tr><td><strong>Fin le: </strong></td><td class="data-row">{{setDate(event.end) | date:"dd/MM/yyyy"}} à {{setDate(event.begin) | date:"HH:mm"}}</td></tr>
+                </table>
+                <a (click)="onEventDetailRequested(event)"
+                   style="float: right; margin-top: 15px"
+                   class="btn btn-primary"
+                   role="button">
+                    Détails
+                </a>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,11 +1,14 @@
 import {Component} from "@angular/core";
 import {EventsService} from "./services/events.service";
 import {Event} from "./model/event";
+import {Component, ViewChild} from "@angular/core";
+import {BS_VIEW_PROVIDERS, MODAL_DIRECTVES, ModalDirective} from "ng2-bootstrap/ng2-bootstrap";
 
 @Component({
 	selector: 'events',
 	templateUrl: 'app/res/html/events.component.html',
-    providers: [EventsService],
+    providers: [EventsService, BS_VIEW_PROVIDERS],
+	directives: [MODAL_DIRECTVES],
 	styleUrls: ['app/res/css/events.component.css']
 })
 
@@ -20,8 +23,12 @@ export class EventsComponent {
     ranger = ["futur", "current", "past"];
     selectedRanger = "futur";
 	events: Event[];
+	selectedEvent: Event;
+	@ViewChild('smModal') smModal;
 
-	constructor(private eventsService: EventsService) {}
+	constructor(private eventsService: EventsService) {
+	    this.onSearchRequested();
+	}
 
     setDate(date: string) {
         return new Date(date);
@@ -35,9 +42,14 @@ export class EventsComponent {
 	onSelect(event: Event) {
 	}
 
+	onEventDetailRequested(event: Event) {
+			this.selectedEvent = event;
+			this.smModal.show();
+	}
+
 	onSearchRequested() {
-		this.clearList();
 		console.log("query : " + this.query);
+		this.clearList();
 		this.retrievesEvents(this.query, this.selectedRanger);
 	}
 

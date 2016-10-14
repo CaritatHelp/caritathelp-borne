@@ -1,5 +1,5 @@
 #events_main_container {
-    width: 30%;
+    width: 35%;
     margin: auto;
 }
 
@@ -11,4 +11,17 @@
 
 .event_picture {
     margin: 20px;
+}
+
+.data-row {
+    padding-left: 15px;
+}
+
+table tr {
+    height: 25px;
+}
+
+.modal-body {
+    padding: 25px;
+    max-height: 500px;
 }

@@ -1,4 +1,3 @@
-import {Component} from "@angular/core";
 import {EventsService} from "./services/events.service";
 import {Event} from "./model/event";
 import {Component, ViewChild} from "@angular/core";

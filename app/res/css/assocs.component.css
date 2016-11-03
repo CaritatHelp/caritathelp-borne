@@ -1,0 +1,23 @@
+#assocs-main {
+    position: relative;
+}
+
+#map_container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#panel_container {
+    position: absolute;
+}
+
+.assoc_detail_img {
+    margin: auto;
+}
+
+.assoc_main_detail_img {
+    margin: 20px;
+    display: block;
+    margin: auto;
+}

@@ -22,4 +22,9 @@ export class HomeComponent {
         let link = ['Events'];
         this.router.navigate(link);
     }
+
+    onAssocsRequested() {
+        let link = ['Assocs'];
+        this.router.navigate(link);
+    }
 }

@@ -1,0 +1,111 @@
+#assocs_panel-main {
+    -webkit-transition-duration: 500ms; /* Safari */
+    transition-duration: 500ms;
+
+    height: inherit;
+    width: 450px;
+    background-color: #c7eab8;
+    z-index: 9999;
+    overflow: auto;
+}
+
+.assocs_panel-main-closed {
+    -ms-transform: translate(-375px, 0px); /* IE 9 */
+    -webkit-transform: translate(-375px, 0px); /* Safari */
+    transform: translate(-375px, 0px);
+}
+
+@keyframes showEffect {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@keyframes hideEffect {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.assocs_panel-content-show {
+    animation: 300ms showEffect;
+}
+
+.assocs_panel-content-hide {
+    animation: 300ms hideEffect;
+    animation-fill-mode: forwards;
+}
+
+.assocs_menu_bt {
+    height: 42px;
+    width: 42px;
+    float: right;
+    margin: 16px;
+}
+
+.input-group {
+    width: 400px;
+    margin: auto;
+}
+
+.assoc-list {
+    padding: 0;
+    margin: 20px 0 0;
+}
+
+.assoc-item {
+    display: block;
+    list-style:none;
+    background-color: white;
+    margin: 0;
+}
+
+.assoc-item blockquote {
+    position: relative;
+    display: block;
+    padding: 15px;
+    margin-top: 3px;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.assoc-places {
+    margin: 15px;
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+address {
+    padding: 0;
+    margin: 0;
+}
+
+.error-message {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+.assoc_item_list_detail_img {
+    height: 90px;
+}
+
+.tags_container {
+    max-width: 100px;
+}
+
+.clear_list_btn {
+    margin-left: 20px;
+    margin-top: 20px;
+}

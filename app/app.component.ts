@@ -3,6 +3,7 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from "@angular/router-
 import {HomeComponent} from "./home.component";
 import {CentresComponent} from "./centres.component";
 import {EventsComponent} from "./events.component";
+import {AssocsComponent} from "./assocs.component";
 
 // Add the RxJS Observable operators we need in this app.
 import './rxjs-operators';
@@ -23,6 +24,11 @@ import './rxjs-operators';
 		path: '/events',
 		name: 'Events',
 		component: EventsComponent
+	},
+	{
+		path: '/assocs',
+		name: 'Assocs',
+		component: AssocsComponent
 	}
 ])
 @Component({

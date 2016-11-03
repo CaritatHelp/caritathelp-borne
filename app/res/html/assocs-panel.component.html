@@ -1,0 +1,52 @@
+<div id="assocs_panel-main" class="{{panelState}}">
+    <img
+            (click)="toggle(visible = !visible)"
+            src="{{buttonSrc}}"
+            class="assocs_menu_bt"
+            alt="Ouvrir ou fermer le menu"/>
+
+    <div class="{{contentAlpha}}">
+        <div class="input-group">
+            <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search"
+                    [(ngModel)]="query" >
+            <div class="input-group-btn">
+                <button
+                        (click)="onSearchRequested()"
+                        class="btn btn-default m-progress"
+                        type="submit">
+                    <i class="glyphicon {{icMainButton}}"></i>
+                </button>
+            </div>
+        </div>
+
+        <button
+                type="button"
+                class="btn btn-default btn-sm clear_list_btn"
+                (click)="clearList()">
+            Vider la liste
+        </button>
+        <ul class="assoc-list">
+            <li *ngFor="let assoc of assocs"
+                (click)="onSelect(assoc)"
+                class="assoc-item">
+                <blockquote>
+                    <strong>{{assoc.name}}</strong><br><br>
+
+                    <img src="http://api.caritathelp.me/{{assoc.thumb_path}}" class="assoc_item_list_detail_img"/><br>
+
+                    <div class="assoc-places">
+                        Nom : <strong>{{assoc.name}}</strong><br>
+                        Description : <strong>{{assoc.description}}</strong><br>
+                        Anniversaire : <strong>{{assoc.birthday}}</strong><br>
+                        Nb membres : <strong>{{assoc.nb_members}}</strong><br>
+                        Position : <strong>{{isLocationAvailable(assoc)}}</strong><br>
+                    </div>
+                </blockquote>
+            </li>
+        </ul>
+        <span class="error-message">{{errorMessage}}</span>
+    </div>
+</div>

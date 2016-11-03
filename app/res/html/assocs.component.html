@@ -1,0 +1,65 @@
+<div id="centres-main">
+    <div bsModal #smModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-label="Close" (click)="smModal.hide()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Oops</h4>
+                </div>
+                <div class="modal-body">
+                    This assoc cannot be positioned on the map :(
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <sebm-google-map
+            id="map_container"
+            [style.height]="getGoogleMapHeight()"
+            [latitude]="lat"
+            [longitude]="lng"
+            [zoom]="zoom"
+            [disableDefaultUI]="false"
+            [zoomControl]="false"
+            (mapClick)="mapClicked($event)">
+
+        <sebm-google-map-marker
+                *ngFor="let m of markers; let i = index"
+                (markerClick)="clickedMarker(m.assoc)"
+                [latitude]="m.lat"
+                [longitude]="m.lng"
+                [label]="m.label"
+                [markerDraggable]="false">
+
+            <sebm-google-map-info-window>
+                <strong>Détail d'une association</strong>
+
+                <blockquote *ngIf="selectedAssoc">
+                    <strong>{{selectedAssoc.name}}</strong><br><br>
+
+                    <img src="http://api.caritathelp.me/{{selectedAssoc.thumb_path}}" class="assoc_main_detail_img"/><br>
+
+                    <img *ngIf="selectedUrls" *ngFor="let url of selectedUrls" src="url" class="assoc_detail_img">
+
+                    <div class="assoc-places">
+                        Nom : <strong>{{selectedAssoc.name}}</strong><br>
+                        Description : <strong>{{selectedAssoc.description}}</strong><br>
+                        Anniversaire : <strong>{{selectedAssoc.birthday}}</strong><br>
+                        Nb membres : <strong>{{selectedAssoc.nb_members}}</strong><br>
+                        ID association : <strong>{{selectedAssoc.id}}</strong><br>
+                    </div>
+                </blockquote>
+            </sebm-google-map-info-window>
+        </sebm-google-map-marker>
+    </sebm-google-map>
+
+    <assocs-panel
+            id="panel_container"
+            (onAssocSelected)="onAssocSelected($event)"
+            (onQueryFinished)="onQueryFinished($event)"
+            [style.height]="getGoogleMapHeight()">
+
+    </assocs-panel>
+</div>

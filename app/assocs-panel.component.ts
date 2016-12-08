@@ -94,17 +94,23 @@ export class AssocsPanelComponent implements OnInit {
 			return;
 		}
 
+        var output = [];
         if (this.query != "") {
             for (var assoc of assocs) {
-                if (assoc.name.indexOf(this.query) == -1 &&
-                    assoc.description.indexOf(this.query) == -1) {
-                    assocs.splice(assocs.indexOf(assoc), 1);
+                var index = assoc.name.toLowerCase().indexOf(this.query.toLowerCase());
+                if (index == -1) {
+                    index = assoc.description.toLowerCase().indexOf(this.query.toLowerCase());
+                }
+                if (index != -1) {
+                    output.push(assoc);
                 }
             }
+        } else {
+            output = assocs;
         }
 
 		this.errorMessage = null;
-		this.assocs = assocs;
-		this.onQueryFinished.emit(assocs);
+		this.assocs = output;
+		this.onQueryFinished.emit(output);
 	}
 }

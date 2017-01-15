@@ -5,7 +5,7 @@ import {Event} from "../model/event";
 
 @Injectable()
 export class EventsService {
-    private API_URL_EVENTS = 'http://staging.caritathelp.me/events?range=';  // URL to web API
+    private API_URL_EVENTS = 'https://staging.caritathelp.me/events?range=';  // URL to web API
 
     constructor (private http: Http) {}
 

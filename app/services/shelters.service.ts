@@ -5,9 +5,9 @@ import {Shelter} from "../model/shelter";
 
 @Injectable()
 export class SheltersService {
-    private API_URL_SHELTERS = 'http://api.caritathelp.me/shelters';  // URL to web API
-    private API_URL_SHELTERS_RESEARCH = 'http://api.caritathelp.me/shelters/search';  // URL to web API
-    private API_URL_SHELTER_PICTURES = 'http://api.caritathelp.me/shelters/';  // URL to pictures
+    private API_URL_SHELTERS = 'https://staging.caritathelp.me/shelters';  // URL to web API
+    private API_URL_SHELTERS_RESEARCH = 'https://staging.caritathelp.me/shelters/search';  // URL to web API
+    private API_URL_SHELTER_PICTURES = 'https://staging.caritathelp.me/shelters/';  // URL to pictures
 
     constructor (private http: Http) {}
 

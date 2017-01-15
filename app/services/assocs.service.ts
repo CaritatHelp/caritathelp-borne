@@ -5,9 +5,9 @@ import {Assoc} from "../model/assoc";
 
 @Injectable()
 export class AssocsService {
-    private API_URL_ASSOCIATIONS = 'http://api.caritathelp.me/associations';  // URL to web API
-    private API_URL_ASSOCIATIONS_RESEARCH = 'http://api.caritathelp.me/associations/search';  // URL to web API
-    private API_URL_SHELTER_PICTURES = 'http://api.caritathelp.me/associations/';  // URL to pictures
+    private API_URL_ASSOCIATIONS = 'https://staging.caritathelp.me/associations';  // URL to web API
+    private API_URL_ASSOCIATIONS_RESEARCH = 'https://staging.caritathelp.me/associations/search';  // URL to web API
+    private API_URL_SHELTER_PICTURES = 'https://staging.caritathelp.me/associations/';  // URL to pictures
 
     constructor (private http: Http) {}
 

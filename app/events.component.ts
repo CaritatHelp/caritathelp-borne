@@ -57,7 +57,7 @@ export class EventsComponent {
         this.markers.push({
             lat: parseFloat(event.latitude.toString()),
             lng: parseFloat(event.longitude.toString()),
-            Event: event
+            event: event
         });
         this.smModal.show();
 	}

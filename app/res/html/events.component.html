@@ -55,6 +55,7 @@
             type="text"
             class="form-control"
             placeholder="Rechercher"
+            (keyup.enter)="onSearchRequested()"
             [(ngModel)]="query" >
     <div class="input-group-btn">
         <button

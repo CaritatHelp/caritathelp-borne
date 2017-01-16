@@ -63,13 +63,12 @@ export class EventsComponent {
 	}
 
 	onSearchRequested() {
-		console.log("query : " + this.query);
 		this.clearList();
 		this.retrievesEvents(this.query, this.selectedRanger);
 	}
 
 	updateRanger() {
-	    console.log(this.selectedRanger);
+
 	}
 
 	mapClicked($event: MouseEvent) {
@@ -105,26 +104,8 @@ export class EventsComponent {
             return;
         }
 
-
-         let output = [];
-         if (this.query == null || this.query == "") {
-             output = events;
-         } else {
-             for (var item in events) {
-                 console.log(events[item]); // 0,1,2
-                 console.log(this.query); // 0,1,2
-                 console.log("index of => " + events[item].assoc_name.indexOf(this.query)); // 0,1,2
-                 if (events[item].assoc_name.indexOf(this.query) !== -1
-                 || events[item].title.indexOf(this.query) !== -1
-                 || events[item].place.indexOf(this.query) !== -1
-                 || events[item].description.indexOf(this.query) !== -1) {
-                     output.push(events[item]);
-                 }
-             }
-         }
-
         this.errorMessage = null;
-        this.events = output;
+        this.events = events;
     }
 }
 

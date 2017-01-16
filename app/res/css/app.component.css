@@ -12,6 +12,7 @@
 
 #app-header-logo {
     height: 70px;
+    cursor: pointer;
 }
 
 #app-header-title {

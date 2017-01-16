@@ -2,12 +2,13 @@ import {EventsService} from "./services/events.service";
 import {Event} from "./model/event";
 import {Component, ViewChild} from "@angular/core";
 import {BS_VIEW_PROVIDERS, MODAL_DIRECTVES, ModalDirective} from "ng2-bootstrap/ng2-bootstrap";
+import {ANGULAR2_GOOGLE_MAPS_DIRECTIVES, MouseEvent} from "angular2-google-maps/core";
 
 @Component({
 	selector: 'events',
 	templateUrl: 'app/res/html/events.component.html',
     providers: [EventsService, BS_VIEW_PROVIDERS],
-	directives: [MODAL_DIRECTVES],
+	directives: [ANGULAR2_GOOGLE_MAPS_DIRECTIVES, MODAL_DIRECTVES],
 	styleUrls: ['app/res/css/events.component.css']
 })
 
@@ -25,8 +26,16 @@ export class EventsComponent {
 	selectedEvent: Event;
 	@ViewChild('smModal') smModal;
 
+	markers: marker[] = [
+
+	];
+
 	constructor(private eventsService: EventsService) {
 	    this.onSearchRequested();
+	}
+
+	clearMarkers() {
+		this.markers = [];
 	}
 
     setDate(date: string) {
@@ -42,8 +51,15 @@ export class EventsComponent {
 	}
 
 	onEventDetailRequested(event: Event) {
-			this.selectedEvent = event;
-			this.smModal.show();
+        this.selectedEvent = event;
+
+        this.clearMarkers();
+        this.markers.push({
+            lat: parseFloat(event.latitude.toString()),
+            lng: parseFloat(event.longitude.toString()),
+            Event: event
+        });
+        this.smModal.show();
 	}
 
 	onSearchRequested() {
@@ -55,6 +71,21 @@ export class EventsComponent {
 	updateRanger() {
 	    console.log(this.selectedRanger);
 	}
+
+	mapClicked($event: MouseEvent) {
+
+	}
+
+	clickedMarker(event: Event) {
+
+	}
+
+    isGPSAvailable(event: Event) {
+        if (event == null || event.latitude == null || event.longitude == null) {
+            return "Non disponible";
+        }
+        return "disponible";
+    }
 
     retrievesEvents(query: string, ranger: string) {
 		this.icMainButton = this.IC_BT_REFRESH;
@@ -95,4 +126,11 @@ export class EventsComponent {
         this.errorMessage = null;
         this.events = output;
     }
+}
+
+// just an interface for type safety.
+interface marker {
+	lat: number;
+	lng: number;
+	event: Event;
 }

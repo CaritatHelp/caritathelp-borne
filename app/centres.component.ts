@@ -75,13 +75,16 @@ export class CentresComponent {
 			lng: parseFloat(shelter.longitude.toString()),
 			shelter: shelter
 		});
+
+        this.lat = parseFloat(shelter.latitude.toString());
+        this.lng = parseFloat(shelter.longitude.toString());
 		console.log(this.markers);
 	}
 
 	mapClicked($event: MouseEvent) {
 		/*var tmp = new Shelter;
 		tmp.name = "rue du crabe";
-		
+
 		this.markers.push({
 			lat: $event.coords.lat,
 			lng: $event.coords.lng,

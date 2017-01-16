@@ -6,6 +6,8 @@ export class Event {
     begin: string;
     end: string;
     assoc_id: number;
+    latitude: number;
+    longitude: number;
     created_at: string;
     updated_at: string;
     assoc_name: string;

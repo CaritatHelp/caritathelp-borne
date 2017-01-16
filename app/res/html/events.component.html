@@ -22,6 +22,32 @@
                         <tr><td><strong>Réf de l'assoc: </strong></td><td class="data-row">{{selectedEvent.assoc_id}}</td></tr>
                     </table>
                 </div>
+
+                <sebm-google-map
+                        class="col-xs-12 col-md-12"
+                        *ngIf="selectedEvent.latitude"
+                        id="map_container"
+                        [latitude]="selectedEvent.latitude"
+                        [longitude]="selectedEvent.longitude"
+                        [zoom]="zoom"
+                        [disableDefaultUI]="false"
+                        [zoomControl]="false"
+                        (mapClick)="mapClicked($event)">
+
+                    <sebm-google-map-marker
+                            *ngFor="let m of markers; let i = index"
+                            (markerClick)="clickedMarker(m.event)"
+                            [latitude]="m.lat"
+                            [longitude]="m.lng"
+                            [label]="m.label"
+                            (markerClick)="clickedMarker(m.event)"
+                            [markerDraggable]="false">
+
+                        <sebm-google-map-info-window>
+                            <strong>Détail d'un centre</strong>
+                        </sebm-google-map-info-window>
+                    </sebm-google-map-marker>
+                </sebm-google-map>
             </div>
         </div>
     </div>
@@ -78,6 +104,7 @@
                     <tr><td><strong>Lieu: </strong></td><td class="data-row">{{event.place}}</td></tr>
                     <tr><td><strong>Début le: </strong></td><td class="data-row">{{setDate(event.begin) | date:"dd/MM/yyyy"}} à {{setDate(event.begin) | date:"HH:mm"}}</td></tr>
                     <tr><td><strong>Fin le: </strong></td><td class="data-row">{{setDate(event.end) | date:"dd/MM/yyyy"}} à {{setDate(event.begin) | date:"HH:mm"}}</td></tr>
+                    <tr><td><strong>Position GPS: </strong></td><td class="data-row">{{isGPSAvailable(event)}}</td></tr>
                 </table>
                 <a (click)="onEventDetailRequested(event)"
                    style="float: right; margin-top: 15px"

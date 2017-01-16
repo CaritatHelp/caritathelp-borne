@@ -78,6 +78,9 @@ export class AssocsComponent {
 			lng: parseFloat(assoc.longitude.toString()),
 			assoc: assoc
 		});
+
+        this.lat = parseFloat(assoc.latitude.toString());
+        this.lng = parseFloat(assoc.longitude.toString());
 		console.log(this.markers);
 	}
 

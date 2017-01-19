@@ -82,8 +82,8 @@
     margin: 15px;
     display: block;
     position: absolute;
-    right: 0;
     bottom: 0;
+    left: 120px;
 }
 
 address {
@@ -98,7 +98,7 @@ address {
 }
 
 .assoc_item_list_detail_img {
-    height: 90px;
+    width: 100px;
 }
 
 .tags_container {
